@@ -4,8 +4,10 @@ import { LuSofa } from "react-icons/lu";
 import { HiArrowsPointingOut } from "react-icons/hi2";
 import { FaChevronLeft, FaChevronRight, FaPaintRoller, FaRegHeart } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
-import { Link } from "react-router-dom"; // Import Link
-
+import { Link, useNavigate } from "react-router-dom"; // Import Link
+import useStore from "../zustand/store.js";
+import { FcLike } from "react-icons/fc";
+import { AiFillHeart } from "react-icons/ai";
 interface Product {
   id: string;
   name: string;
@@ -17,11 +19,29 @@ interface Product {
   createdAt?: string;
 }
 
-const ITEMS_PER_PAGE = 21; // Items per page
+const ITEMS_PER_PAGE = 21; 
 
 const Cart: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1); // Track current page
+  const [currentPage, setCurrentPage] = useState(1); 
+  const navigate = useNavigate();
+  const { setTicket, tickets, deleteTicket } = useStore();
+
+
+  const handleTicketClick = (product: any) => {
+    const ticketExists = tickets.some(ticket => ticket.id === product.id);
+    if (ticketExists) {
+      alert("Такой билет уже бронирован");
+    } else {
+      setTicket(product);      
+    }
+  };
+
+  const handleDeleteTicket = (id: number) => {
+    deleteTicket(id);
+  };
+
+
 
   useEffect(() => {
     axios
@@ -34,19 +54,19 @@ const Cart: React.FC = () => {
       });
   }, []);
 
+  console.log(tickets);
+  
+
   const indexOfLastProduct = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstProduct = indexOfLastProduct - ITEMS_PER_PAGE;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  // Calculate total pages
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
 
-  // Handle page change
   const goToPage = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
-  // Handle previous and next buttons
   const goToPreviousPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
@@ -66,10 +86,11 @@ const Cart: React.FC = () => {
           alignItems: "center",
         }}
       >
-        {currentProducts.map((product) => (
-          <Link
+        {currentProducts.map((product) => {
+          const isLiked = tickets.some(ticket => ticket.id === product.id);
+          return (
+          <div
             key={product.id}
-            to={`products/${product.id}`}
             style={{ textDecoration: "none", color: "inherit", width: "90%" }}
           >
             <div
@@ -134,7 +155,13 @@ const Cart: React.FC = () => {
                     justifyContent: "end",
                   }}
                 >
-                  <FaRegHeart style={{ width: "25px", height: "25px" }} />
+                  {
+                    isLiked ? (
+                      <AiFillHeart style={{ width: "25px", height: "25px", color: "red" }} onClick={() => handleDeleteTicket(product.id)} />
+                    ) : (
+                      <FaRegHeart onClick={() => handleTicketClick(product)} style={{ width: "25px", height: "25px" }} />
+                    )
+                  }
                   <p
                     style={{
                       fontFamily: "sans-serif",
@@ -173,8 +200,8 @@ const Cart: React.FC = () => {
                 ></div>
               </div>
             </div>
-          </Link>
-        ))}
+          </div>
+        )})}
 
         <div style={{ display: "flex", marginLeft: "60%", gap: "10px", padding: "20px" }}>
           <button

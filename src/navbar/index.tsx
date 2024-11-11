@@ -4,7 +4,7 @@ import { Button, Input, Space } from "antd";
 import type { GetProps } from "antd";
 import { MdOutlineEventNote } from "react-icons/md";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/index";
 import { IoPerson } from "react-icons/io5";
 
@@ -16,6 +16,7 @@ const onSearch: SearchProps["onSearch"] = (value, _e, info) =>
   console.log(info?.source, value);
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const { logout } = useContext(AuthContext);
 
@@ -76,7 +77,7 @@ const Navbar: React.FC = () => {
 
           <div style={{ display: 'flex', gap: 20, justifyContent: 'center', alignItems: 'center' }}>
             <MdOutlineEventNote size={20} />
-            <FaRegHeart size={20} />
+            <FaRegHeart onClick={() => navigate('/favorites')} size={20} />
 
             {isLoggedIn ? (
               

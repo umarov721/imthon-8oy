@@ -13,6 +13,7 @@ import AuthContextProvider from "./context";
 import Single from "./single";
 import ProductDetails from "./single";
 import { Switch } from "antd";
+import Favorites from "./favorites";
 
 const Router = () => {
   return (
@@ -27,11 +28,14 @@ const Router = () => {
             <Route path="loginNavbar" element={<LoginNav />} />
           </Route>
           
+          
+          <Route path="favorites" element={<Favorites />} />
           <Route path="carts" element={<Carts />}/>
             <Route path="sitebar" element={<SiteBar />} />
            
             <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/" element={<MainLayout />}>
+
             <Route path="navbar" element={<Navbar />} />
             <Route path="sitebar" element={<SiteBar />} />
             <Route path="cart" element={<Cart />} />
