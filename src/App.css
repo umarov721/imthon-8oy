@@ -1,0 +1,150 @@
+* {
+  margin-right: 0;
+  margin-left: 0;
+}
+html,
+body {
+  margin: 0;
+}
+
+.instagram-icon {
+  color: rgba(22, 26, 29, 1);
+  transition: color 0.3s;
+}
+.instagram-icon:hover {
+  color: #fca311;
+}
+
+.telegram-icon {
+  color: rgba(22, 26, 29, 1);
+  transition: color 0.3s;
+}
+.telegram-icon:hover {
+  color: #fca311;
+}
+
+.youtube-icon {
+  color: rgba(22, 26, 29, 1);
+  transition: color 0.3s;
+}
+.youtube-icon:hover {
+  color: #fca311;
+}
+
+.facebook-icon {
+  color: rgba(22, 26, 29, 1);
+  transition: color 0.3s;
+}
+.facebook-icon:hover {
+  color: #fca311;
+}
+
+.inp {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #c3c3c3;
+  outline: none;
+
+}
+
+.ant-input-outlined:hover {
+  /* border: none; */
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.custom-input {
+  display: block;
+  width: 50px;
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+}
+.code-container{
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #c3c3c3;
+  outline: none;
+
+}
+
+
+
+
+.property-details {
+  max-width: 700px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.section {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.pricing-section,
+.details-section {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.pricing-item,
+.details-item,
+.info-item {
+  margin: 10px 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.no-commission {
+  color: #28a745;
+  font-weight: bold;
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.amenities-list,
+.facilities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.amenities-list span,
+.facilities-list span {
+  background-color: #f1f1f1;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.broker-service {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #333;
+}
