@@ -6,7 +6,6 @@ import { FaChevronLeft, FaChevronRight, FaPaintRoller, FaRegHeart } from "react-
 import { IoEyeSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom"; // Import Link
 import useStore from "../zustand/store.js";
-import { FcLike } from "react-icons/fc";
 import { AiFillHeart } from "react-icons/ai";
 interface Product {
   id: string;

@@ -12,8 +12,6 @@ import LoginCode from "./loginCode";
 import AuthContextProvider from "./context";
 import Single from "./single";
 import ProductDetails from "./single";
-import { Switch } from "antd";
-import Favorites from "./favorites";
 
 const Router = () => {
   return (
@@ -29,7 +27,6 @@ const Router = () => {
           </Route>
           
           
-          <Route path="favorites" element={<Favorites />} />
           <Route path="carts" element={<Carts />}/>
             <Route path="sitebar" element={<SiteBar />} />
            
